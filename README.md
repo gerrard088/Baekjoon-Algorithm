@@ -1,2 +1,2 @@
 # Baekjoon-Algorithm
-백준 코테 풀
+백준 코테 풀이
