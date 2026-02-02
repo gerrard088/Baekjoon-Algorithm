@@ -1,28 +1,37 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
+
+// 숫자에 666이 포함되어 있는지 확인하는 함수
+bool isEndNumber(int n) {
+    while (n >= 666) {
+        // 마지막 세 자리가 666이면 true
+        if (n % 1000 == 666) {
+            return true;
+        }
+        // 숫자 한 칸 밀기 (10으로 나누기)
+        n /= 10;
+    }
+    return false;
+}
 
 int main() {
     int N;
     cin >> N;
 
-    int num = 666; // 가장 작은 종말의 수부터 시작
+    int num = 666;
     int count = 0;
 
     while (true) {
-        // 숫자를 문자열로 변환하여 "666"이 포함되어 있는지 확인
-        if (to_string(num).find("666") != string::npos) {
+        if (isEndNumber(num)) {
             count++;
         }
 
-        // N번째 숫자를 찾았다면 출력 후 종료
         if (count == N) {
             cout << num << endl;
             break;
         }
-
-        num++; // 다음 숫자로 이동
+        num++;
     }
 
     return 0;
